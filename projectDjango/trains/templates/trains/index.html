@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	{% load bootstrap5 %}
+	{% bootstrap_javascript %}
+	{% bootstrap_css %}
+	<title>Список поездов</title>
+</head>
+
+<body>
+	<h1>Список поездов</h1>
+	<table class="table">
+		<thead class="table-head">
+			<tr>
+				<th>Номер поезда</th>
+				<th>Тип</th>
+				<th>Число вагонов</th>
+				<th>Начало(станция, время) - конец(станция, время)</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for train in trains %}
+				<tr>
+					<td rowspan="{{ train.count }}" style="vertical-align: middle;">{{ train.train_name }}</td>
+					<td rowspan="{{ train.count }}" style="vertical-align: middle;">{{ train.train_type }}</td>
+					<td rowspan="{{ train.count }}" style="vertical-align: middle;">{{ train.carriage_number }}</td>
+					{% if train.schedule_list %}
+						<td>{{ train.schedule_list.pop.schedule }}</td>
+
+						{% for sch in train.schedule_list %}
+							<tr>
+								<td>{{ sch.schedule }}</td>
+							</tr>
+						{% endfor %}
+					{% else %}
+						<td> Нет запланированных маршрутов </td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	{% load bootstrap5 %}
+	{% bootstrap_javascript %}
+	{% bootstrap_css %}
+	<title>Расписание поездов</title>
+</head>
+
+<body>
+	<h1>Расписание поездов</h1>
+	<table class="table">
+		<thead class="table-head">
+			<tr>
+				<th>Начальная станция</th>
+				<th>Тарифная зона</th>
+				<th>Конечная станция</th>
+				<th>Тарифная зона</th>
+				<th>Время отправления</th>
+				<th>Время прибытия</th>
+				<th>Поезд</th>
+				<th>Станции без остановки</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for sch in schedule_list %}
+				<tr>
+					<td>{{ sch.start_station_name }}</td>
+					<td>{{ sch.start_station_tariff_zone }}</td>
+					<td>{{ sch.end_station_name }}</td>
+					<td>{{ sch.end_station_tariff_zone }}</td>
+					<td>{{ sch.start_time }}</td>
+					<td>{{ sch.end_time }}</td>
+					<td>{{ sch.train }}</td>
+					<td>{{ sch.pass_station }}</td>
+				</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
