@@ -23,8 +23,8 @@ class Station(models.Model):
         return self.station_name
 
     class Meta:
-        verbose_name_plural = 'Станция'
-        verbose_name = 'Станции'
+        verbose_name_plural = 'Станции'
+        verbose_name = 'Станция'
         ordering = ['station_name']
 
 
@@ -41,7 +41,7 @@ class Schedule(models.Model):
     train = models.ForeignKey(Train, on_delete=models.CASCADE, verbose_name='Поезд')
 
     def __str__(self):
-        return self.start_station.name + '-' + self.end_station.name
+        return self.start_station.station_name + '-' + self.end_station.station_name
 
     class Meta:
         verbose_name_plural = 'Расписание'

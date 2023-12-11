@@ -36,10 +36,6 @@ for s in station_data:
     station_list.append(station)
     station.save()
 
-import datetime
-
-# time(hour = 0, minute = 0, second = 0)
-# d = datetime.time(10, 33, 45)
 
 schedule_data = [
     {"start_station": station_list[0], "end_station": station_list[2], "start_time": datetime.time(13, 46, 0),
